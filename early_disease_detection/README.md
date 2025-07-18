@@ -1,6 +1,6 @@
 # Early Disease Detection ML System
 
-![CI/CD](https://github.com/yourusername/early-disease-detection/actions/workflows/main.yml/badge.svg)
+![CI/CD](https://github.com/priyanshumishra610/early-disease-detection/actions/workflows/main.yml/badge.svg)
 
 ## Mission Statement
 A modular, production-grade MLOps system for early disease detection, combining robust data pipelines, explainable AI, and modern DevOps best practices.
@@ -21,7 +21,7 @@ See the [README in docs/](docs/README.md) for a detailed folder breakdown.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/early-disease-detection.git
+git clone https://github.com/priyanshumishra610/early-disease-detection.git
 cd early-disease-detection
 ```
 
