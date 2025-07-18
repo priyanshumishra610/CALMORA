@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build: ../api
+    container_name: fastapi_app
+    env_file:
+      - ../configs/.env.example
+    ports:
+      - "8000:8000"
+    command: uvicorn fastapi_app:app --host 0.0.0.0 --port 8000
+    networks:
+      - edd-net
+    depends_on:
+      - mlflow
+
+  streamlit:
+    build: ../frontend
+    container_name: streamlit_app
+    env_file:
+      - ../configs/.env.example
+    ports:
+      - "8501:8501"
+    command: streamlit run streamlit_app.py
+    networks:
+      - edd-net
+    depends_on:
+      - fastapi
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.9.2
+    container_name: mlflow_server
+    env_file:
+      - ../configs/.env.example
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-artifacts:/mlflow/artifacts
+    command: mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root /mlflow/artifacts --host 0.0.0.0
+    networks:
+      - edd-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ../monitoring/prometheus/:/etc/prometheus/
+    networks:
+      - edd-net
+    # Add scrape configs in ../monitoring/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - edd-net
+    # Add dashboards/configs in ../monitoring/grafana/
+
+  # seldon-core:
+  #   image: seldonio/seldon-core-s2i-python3:1.16.0
+  #   container_name: seldon_core
+  #   networks:
+  #     - edd-net
+  #   # Uncomment and configure for model serving in production
+
+networks:
+  edd-net:
+    driver: bridge
+
+volumes:
+  mlflow-artifacts:
+    driver: local 
