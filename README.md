@@ -1,44 +1,44 @@
 # 🚑 Early Disease Detection AI System
 
-> **Modern, trustworthy, production-grade MLOps pipeline for early disease prediction and risk detection — built with ZenML, MLflow, BentoML, Seldon Core, FastAPI, Streamlit, Prometheus, Evidently AI, and CI/CD best practices.**
+**Modern, trustworthy, production-grade MLOps pipeline for early disease prediction and risk detection — built with ZenML, MLflow, BentoML, Seldon Core, FastAPI, Streamlit, Prometheus, Evidently AI, Tailwind, and full CI/CD best practices.**
 
 ---
 
-## 🎯 **Project Mission**
+## 🎯 Project Mission
 
-Healthcare needs proactive tools to detect diseases *early* — saving lives and costs.  
-This project is an **end-to-end AI system** that uses state-of-the-art MLOps, explainability, privacy, and human-centered design to help patients and doctors make faster, more informed decisions.
+Healthcare needs proactive tools to detect diseases *early* — saving lives, reducing costs, and empowering doctors with data-driven insights.  
+This project is an end-to-end AI system that combines advanced **MLOps**, **explainability**, **privacy**, and **human-centered design** to deliver actionable predictions and transparent risk explanations.
 
 ---
 
-## 🛠️ **Tech Stack**
+## 🛠️ Tech Stack
 
 | Layer              | Tools & Libraries                                          |
 |--------------------|------------------------------------------------------------|
 | 🧩 **ML Pipelines** | ZenML, DVC, Pandas, scikit-learn, XGBoost                  |
-| 🔍 **Tracking**    | MLflow (Tracking + Registry)                               |
-| 📦 **Serving**     | BentoML, Seldon Core, FastAPI                              |
-| 🎨 **Frontend**    | Streamlit, Tailwind (optional), Figma (design system)      |
-| 🔑 **MLOps**       | Docker, Kubernetes, Helm, GitHub Actions, Prometheus, Grafana |
-| 📈 **Monitoring**  | Evidently AI (data drift)                                  |
-| 🔒 **Security**    | .env configs, role-based access (planned)                  |
+| 🔍 **Experiment Tracking** | MLflow (Tracking & Registry)                          |
+| 📦 **Serving & Deployment** | BentoML, Seldon Core, FastAPI                     |
+| 🎨 **Frontend**    | Streamlit, Tailwind CSS, Figma (design system)              |
+| 🔑 **MLOps & Orchestration** | Docker, Kubernetes, Helm, GitHub Actions, Prometheus, Grafana |
+| 📈 **Monitoring**  | Evidently AI (data drift)                                   |
+| 🔒 **Security**    | .env configs, role-based access (RBAC planned)              |
 
 ---
 
-## 🗂️ **Key Features**
+## 🗂️ Key Features
 
-✅ Modular pipelines (ingestion, preprocessing, training, deployment)  
-✅ Data & model versioning with DVC & MLflow  
-✅ Real-time API serving with FastAPI + BentoML  
-✅ Explainable AI placeholders (SHAP/LIME)  
-✅ Streamlit frontend for patients & doctors  
-✅ Monitoring with Prometheus, Grafana & Evidently AI  
-✅ CI/CD pipeline with GitHub Actions  
-✅ Designed for cloud-native deployment (Kubernetes, Helm)
+✅ Modular ML pipelines (ingestion, preprocessing, training, deployment)  
+✅ Versioned data & model tracking with DVC and MLflow  
+✅ Real-time, scalable API serving with FastAPI + BentoML + Seldon  
+✅ Explainability integration with SHAP and LIME  
+✅ Streamlit + Tailwind frontend for patient & doctor dashboards  
+✅ Robust monitoring with Prometheus, Grafana & Evidently AI  
+✅ Fully automated CI/CD with GitHub Actions  
+✅ Cloud-native ready: Docker, Kubernetes, Helm
 
 ---
 
-## 🏛️ **High-Level Architecture**
+## 🏛️ High-Level Architecture
 
 ```plaintext
             +------------------+
@@ -74,7 +74,7 @@ Edit
 git clone https://github.com/priyanshumishra610/early-disease-detection.git
 cd early-disease-detection
 
-# Create virtual environment & activate
+# Create a virtual environment & activate
 python -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 # OR
@@ -83,15 +83,15 @@ source .venv/bin/activate  # Linux/macOS
 # Install dependencies
 pip install -r requirements.txt
 
-# Run ZenML pipeline (example)
+# Run ZenML pipelines (example)
 python pipelines/ingestion_pipeline.py
 python pipelines/preprocessing_pipeline.py
 python pipelines/training_pipeline.py
 
-# Serve API
+# Serve the FastAPI backend
 uvicorn api.fastapi_app:app --reload
 
-# Run Streamlit frontend
+# Launch the Streamlit frontend
 streamlit run frontend/streamlit_app.py
 🚀 Run with Docker Compose
 bash
@@ -104,42 +104,46 @@ Copy
 Edit
 pytest tests/
 📊 Monitoring
-Access MLflow Tracking UI at http://localhost:5000
+MLflow Tracking UI: http://localhost:5000
 
-Prometheus and Grafana dashboards are included in docker-compose.yml (placeholders).
+Prometheus and Grafana dashboards included in docker-compose.yml
 
-Drift reports generated with Evidently AI.
+Evidently AI for drift detection reports
 
 🔐 Environment Variables
-All secrets and configs are managed through .env.
-DO NOT commit real credentials — use .env.example as a template.
+All secrets and configuration keys are managed securely via .env files.
+Never commit real credentials — always use .env.example as your template.
 
-🎉 What’s Next
- Add real SHAP/LIME explainability.
+🎯 Roadmap
+✅ Phase 1: Core project structure, pipelines, environment configs, CI/CD setup, Docker Compose orchestration, and initial tests.
+🔄 Phase 2: Implement end-to-end pipelines with real data, robust MLflow tracking, BentoML packaging, and live API serving.
+🚀 Phase 3: Securely connect frontend to backend, integrate SHAP/LIME explainability, add user authentication (RBAC).
+☸️ Phase 4: Deploy stack with Helm to Kubernetes (GKE, EKS, or AKS) with monitoring dashboards for live performance and drift.
+🌐 Phase 5: Extend UX with refined Figma design system, Tailwind styling, advanced doctor/patient workflows, and mobile-friendly version.
 
- Connect frontend to backend endpoints.
+💡 Future Vision
+Integrate a feature store (Feast) for advanced feature management.
 
- Implement real authentication (RBAC).
+Expand to support multiple disease models and plugins.
 
- Add Helm chart for Kubernetes.
-
- Finalize monitoring dashboards.
-
- Deploy to cloud (GKE, EKS, AKS).
+Enable community-driven extensions and contributions.
 
 🤝 Contributing
-Fork the repo
+Your ideas, issues, and pull requests are welcome!
 
-Create a new branch (git checkout -b feature/my-feature)
+Fork this repo
 
-Commit changes (git commit -m 'Add feature')
+Create a branch: git checkout -b feature/your-feature
 
-Push to your branch (git push origin feature/my-feature)
+Commit your changes: git commit -m 'Add new feature'
 
-Create a Pull Request!
+Push to your branch: git push origin feature/your-feature
+
+Open a Pull Request!
 
 🏷️ License
-MIT — use it, share it, make it better.
+MIT License — use it, share it, make it better.
 
 🔗 Built with ❤️ by Priyanshu Mishra
+If you find this project valuable, star ⭐️ it, share it, and contribute!
 
