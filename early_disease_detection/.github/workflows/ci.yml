@@ -1,0 +1,51 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      docker:
+        image: docker:20.10.7
+        options: --privileged
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install -r early_disease_detection/configs/requirements.txt
+      - name: Lint (black)
+        run: |
+          pip install black
+          black --check early_disease_detection/app early_disease_detection/api early_disease_detection/frontend
+      - name: Lint (flake8)
+        run: |
+          pip install flake8
+          flake8 early_disease_detection/app early_disease_detection/api early_disease_detection/frontend
+      - name: Test (pytest)
+        run: |
+          pip install pytest requests
+          pytest early_disease_detection/tests --maxfail=1 --disable-warnings -v
+      - name: Build Backend Docker Image
+        run: |
+          docker build -t calmora-backend:latest -f early_disease_detection/app/Dockerfile early_disease_detection/app
+      - name: Build Frontend Docker Image
+        run: |
+          docker build -t calmora-frontend:latest -f early_disease_detection/frontend/Dockerfile early_disease_detection/frontend
+      # - name: Push Docker Images to Registry
+      #   run: |
+      #     docker tag calmora-backend:latest <your-registry>/calmora-backend:latest
+      #     docker tag calmora-frontend:latest <your-registry>/calmora-frontend:latest
+      #     docker push <your-registry>/calmora-backend:latest
+      #     docker push <your-registry>/calmora-frontend:latest
+      # - name: Deploy to Staging Server
+      #   run: |
+      #     # Add your deployment script here 

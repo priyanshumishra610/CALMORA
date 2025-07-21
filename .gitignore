@@ -1,0 +1,108 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# VS Code
+.vscode/
+
+# Environments
+.env
+.env.*
+.venv/
+venv/
+ENV/
+env.bak/
+
+# Data, models, and artifacts
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+*.csv
+*.tsv
+*.xlsx
+*.db
+*.sqlite
+*.log
+*.mlmodel
+*.onnx
+*.pt
+*.pth
+*.sav
+*.dvc
+mlruns/
+models/
+artifacts/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# DVC
+.dvc/
+
+# Mac
+.DS_Store
+
+# Other
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Ignore Figma exports
+frontend/figma_designs/ 
